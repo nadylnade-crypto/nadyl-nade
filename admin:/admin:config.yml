@@ -1,0 +1,72 @@
+backend:
+  name: git-gateway
+  branch: main # Change to master if your main branch is master
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Paramètres du site"
+    files:
+      - label: "Informations générales"
+        name: "general"
+        file: "data/settings.json"
+        fields:
+          - {label: "Nom du site", name: "site_name", widget: "string", default: "Nadyl Nadé"}
+          - {label: "Titre principal", name: "main_title", widget: "string"}
+          - {label: "Sous-titre", name: "subtitle", widget: "text"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Email de contact", name: "email", widget: "string"}
+          - {label: "Photo de profil", name: "profile_image", widget: "image", required: false}
+
+  - name: "books"
+    label: "Mes Livres"
+    folder: "data/books"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Série", name: "series", widget: "string", required: false}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Statut", name: "status", widget: "select", options: ["Roman publié", "À paraître", "En cours d'écriture"]}
+      - {label: "Couverture", name: "cover", widget: "image", required: false}
+      - {label: "Lien Amazon", name: "amazon_link", widget: "string", required: false}
+      - {label: "Lien toutes plateformes", name: "all_platforms_link", widget: "string", required: false}
+      - {label: "Date de publication", name: "publication_date", widget: "datetime", required: false}
+      - {label: "Ordre d'affichage", name: "order", widget: "number", default: 1}
+
+  - name: "excerpts"
+    label: "Extraits"
+    folder: "data/excerpts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titre du livre", name: "book_title", widget: "string"}
+      - {label: "Extrait", name: "excerpt_text", widget: "text"}
+      - {label: "Image d'illustration", name: "image", widget: "image", required: false}
+      - {label: "Ordre d'affichage", name: "order", widget: "number", default: 1}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Page À propos"
+        name: "about"
+        file: "data/about.json"
+        fields:
+          - {label: "Titre", name: "title", widget: "string", default: "À propos"}
+          - {label: "Contenu", name: "content", widget: "text"}
+          - {label: "Photo", name: "image", widget: "image", required: false}
+
+  - name: "blog"
+    label: "Articles de blog"
+    folder: "data/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Extrait", name: "excerpt", widget: "text", required: false}
+      - {label: "Contenu", name: "body", widget: "markdown"}
+      - {label: "Publié", name: "published", widget: "boolean", default: false}

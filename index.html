@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nadyl Nadé — Romances contemporaines, douces et inclusives</title>
+  <meta name="description" content="Autrice de romances contemporaines inclusives : All of Me – Imogene, All of You – Achille, et la prochaine : All of You – Ezra." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fffafc; --ink:#222225; --sub:#5b5b66;
+      --brand:#e7b8c9; --brand-strong:#d88aa7;
+      --card:#ffffff; --ring:rgba(216,138,167,.35);
+      --shadow:0 10px 25px rgba(17,17,17,.08); --radius:20px;
+      --gradient-pink: linear-gradient(135deg, #f9e7ef 0%, #fbeff5 50%, #e7b8c9 100%);
+      --gradient-hero: linear-gradient(135deg, #fffafc 0%, #f8f0f5 100%);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;transition:all 0.3s ease}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    
+    /* Header amélioré */
+    header{position:sticky;top:0;backdrop-filter:saturate(1.1) blur(10px);background:linear-gradient(180deg,rgba(255,250,252,.95),rgba(255,250,252,.8));border-bottom:1px solid rgba(231,184,201,.2);z-index:10;transition:all 0.3s ease}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.3s ease}
+    .brand:hover{transform:translateY(-2px)}
+    .logo{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, #f7dbe6 40%, #e7b8c9);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05), 0 4px 12px rgba(231,184,201,.3);transition:all 0.3s ease}
+    .brand:hover .logo{box-shadow:inset 0 0 0 1px rgba(0,0,0,.05), 0 6px 20px rgba(231,184,201,.4)}
+    .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0;font-weight:700;letter-spacing:.2px}
+    .menu{display:flex;gap:14px;flex-wrap:wrap}
+    .menu a{padding:10px 16px;border-radius:999px;text-decoration:none;color:var(--sub);transition:all 0.3s ease;position:relative;overflow:hidden}
+    .menu a:before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);transition:left 0.5s}
+    .menu a:hover:before{left:100%}
+    .menu a:hover{background:#fff;box-shadow:var(--shadow);color:var(--ink);transform:translateY(-2px)}
+
+    /* Hero amélioré */
+    .hero{padding:80px 24px 50px;background:var(--gradient-hero);position:relative;overflow:hidden}
+    .hero:before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(circle at center, rgba(231,184,201,0.1) 0%, transparent 70%);pointer-events:none}
+    .hero .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:2}
+    .kicker{color:var(--brand-strong);font-weight:600;letter-spacing:.8px;text-transform:uppercase;font-size:13px;margin-bottom:16px;position:relative;padding-left:20px}
+    .kicker:before{content:'';position:absolute;left:0;top:50%;width:12px;height:2px;background:var(--brand-strong);transform:translateY(-50%)}
+    .title{font-family:"Playfair Display",serif;font-size:52px;line-height:1.1;margin:0 0 20px;background:linear-gradient(135deg, var(--ink) 0%, var(--brand-strong) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .lead{color:var(--sub);max-width:52ch;font-size:18px;line-height:1.6}
+    .cta{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap}
+    .btn{appearance:none;border:none;border-radius:999px;padding:14px 24px;font-weight:600;cursor:pointer;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);text-decoration:none;display:inline-block;position:relative;overflow:hidden}
+    .btn:before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.3);border-radius:50%;transition:all 0.3s ease;transform:translate(-50%, -50%)}
+    .btn:hover:before{width:300px;height:300px}
+    .btn-primary{background:linear-gradient(135deg, var(--brand-strong) 0%, #c97a9a 100%);color:#fff;box-shadow:0 4px 15px rgba(216,138,167,0.3)}
+    .btn-primary:hover{box-shadow:0 8px 25px rgba(216,138,167,0.4);transform:translateY(-3px)}
+    .btn-ghost{background:#fff;color:#222;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+    .btn-ghost:hover{box-shadow:0 8px 25px rgba(0,0,0,0.1);transform:translateY(-2px)}
+    
+    /* Carte hero améliorée */
+    .hero-art .card{background:var(--card);border-radius:var(--radius);box-shadow:0 20px 40px rgba(17,17,17,.1);padding:20px;transform:rotate(-2deg);transition:all 0.5s ease}
+    .hero-art .card:hover{transform:rotate(0deg) translateY(-10px);box-shadow:0 30px 60px rgba(17,17,17,.15)}
+    .hero-art img{border-radius:12px;transition:all 0.5s ease}
+    .hero-art .card:hover img{transform:scale(1.05)}
+
+    /* Sections */
+    .section{padding:60px 24px;position:relative}
+    .section:nth-child(even){background:linear-gradient(180deg, rgba(255,250,252,0.5) 0%, rgba(248,240,245,0.5) 100%)}
+    .section h2{font-family:"Playfair Display",serif;font-size:36px;margin:0 0 12px;position:relative;display:inline-block}
+    .section h2:after{content:'';position:absolute;bottom:-8px;left:0;width:60%;height:3px;background:linear-gradient(90deg, var(--brand-strong) 0%, transparent 100%)}
+    .muted{color:var(--sub);margin:0 0 30px;font-size:18px}
+
+    /* Livres améliorés */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .book{display:flex;flex-direction:column;gap:16px;transition:all 0.3s ease;padding:20px;border-radius:16px;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,0.05)}
+    .book:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.1)}
+    .book .cover{aspect-ratio:3/4;border-radius:16px;background:var(--gradient-pink);position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:all 0.5s ease}
+    .book:hover .cover{transform:scale(1.02)}
+    .tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.95);border:1px solid rgba(0,0,0,.06);padding:8px 12px;border-radius:999px;font-size:12px;font-weight:600;color:var(--brand-strong);backdrop-filter:blur(10px)}
+    .book h3{margin:0;font-size:20px;font-family:"Playfair Display",serif;color:var(--ink)}
+    .book p{margin:0;color:var(--sub);line-height:1.6}
+    .book .actions{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
+    .chip{font-size:12px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.08)}
+
+    /* Extrait amélioré */
+    .excerpt{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    blockquote{margin:0;padding:30px;border-left:5px solid var(--brand-strong);background:#fff;border-radius:16px;color:#333;font-style:italic;font-size:18px;line-height:1.7;box-shadow:0 10px 30px rgba(0,0,0,0.08);position:relative}
+    blockquote:before{content:'"';position:absolute;top:-10px;left:20px;font-size:60px;color:var(--brand-strong);font-family:"Playfair Display",serif}
+
+    /* Newsletter améliorée */
+    .nl{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
+    .nl form{display:flex;flex-direction:column;gap:16px}
+    .form-row{display:flex;gap:12px;flex-wrap:wrap}
+    input[type=email],input[type=text]{flex:1;min-width:220px;border-radius:999px;border:2px solid rgba(0,0,0,.08);padding:14px 18px;font-size:15px;outline:none;transition:all 0.3s ease}
+    input[type=email]:focus,input[type=text]:focus{border-color:var(--brand-strong);box-shadow:0 0 0 6px var(--ring);transform:translateY(-2px)}
+    textarea{width:100%;border-radius:16px;border:2px solid rgba(0,0,0,.08);padding:16px 18px;font-size:15px;outline:none;transition:all 0.3s ease;resize:vertical;min-height:120px}
+    textarea:focus{border-color:var(--brand-strong);box-shadow:0 0 0 6px var(--ring)}
+
+    /* Footer amélioré */
+    footer{padding:40px 24px;border-top:1px solid rgba(0,0,0,.06);background:linear-gradient(180deg, rgba(255,250,252,0.8) 0%, rgba(248,240,245,0.5) 100%);color:var(--sub)}
+    .foot{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+    .legal{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}
+    .legal a:hover{color:var(--brand-strong)}
+
+    /* Animations d'apparition */
+    .fade-in{opacity:0;transform:translateY(30px);animation:fadeIn 0.8s ease forwards}
+    @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
+    
+    /* Responsive amélioré */
+    @media (max-width:950px){
+      .hero .inner, .excerpt, .nl{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .title{font-size:42px}
+      .hero{padding:60px 24px 40px}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      .title{font-size:36px}
+      .hero{padding:50px 24px 30px}
+      .menu{gap:8px}
+      .menu a{padding:8px 12px;font-size:14px}
+      .form-row{flex-direction:column}
+      .foot{grid-template-columns:1fr;text-align:center;gap:20px}
+      .legal{justify-content:center}
+    }
+  </style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Navigation principale">
+      <a href="#top" class="brand"><span class="logo" aria-hidden="true"></span><h1>Nadyl Nadé</h1></a>
+      <nav class="menu" aria-label="Sections">
+        <a href="#livres">Livres</a>
+        <a href="#extrait">Extrait</a>
+        <a href="#a-propos">À propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap inner">
+        <div class="fade-in">
+          <div class="kicker">Romances contemporaines • Inclusives • Slow burn</div>
+          <h2 class="title">Parce que l'amour n'a pas besoin de chaos pour être beau.</h2>
+          <p class="lead">Autrice de romances où les héroïnes noires, rondes et puissantes prennent toute la lumière. Découvrez <em>All of Me — Imogene</em>, <em>All of You — Achille</em> et la prochaine : <em>All of You — Ezra</em>, une romance en Corée du Sud avec tension, humour et douceur.</p>
+          <div class="cta">
+            <a href="#livres" class="btn btn-primary">Voir les livres</a>
+            <a href="#contact" class="btn btn-ghost">Me contacter</a>
+          </div>
+        </div>
+        <div class="hero-art fade-in">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?q=80&w=2400&auto=format&fit=crop" alt="Livres posés sur une table, ambiance rose poudré" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVRES -->
+    <section id="livres" class="section">
+      <div class="wrap">
+        <h2>Mes livres</h2>
+        <p class="muted">Des histoires qui célèbrent la tendresse, la représentation et des couples mixtes crédibles.</p>
+        <div class="grid" role="list" aria-label="Liste des livres">
+          <article class="book fade-in" role="listitem">
+            <div class="cover" aria-hidden="true">
+              <span class="tag">Roman publié</span>
+            </div>
+            <h3>All of Me — Imogene</h3>
+            <p>Une héroïne qui refuse le chaos, un amour qui apprend à respirer. Comédie romantique contemporaine.</p>
+            <div class="actions">
+              <a class="btn btn-primary" target="_blank" rel="noopener" href="https://books2read.com/u/bMMzW7">Toutes plateformes</a>
+              <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.amazon.fr/ALL-ME-Imogene-Nadyl-Nad%C3%A9-ebook/dp/B0CR1NDP2R/ref=tmm_kin_swatch_0">Amazon Kindle</a>
+            </div>
+          </article>
+
+          <article class="book fade-in" role="listitem" style="animation-delay:0.2s">
+            <div class="cover" aria-hidden="true">
+              <span class="tag">Roman publié</span>
+            </div>
+            <h3>All of You — Achille</h3>
+            <p>Elle, solitaire et brillante. Lui, réservé. Une romance tendre, piquante, et résolument moderne.</p>
+            <div class="actions">
+              <a class="btn btn-primary" target="_blank" rel="noopener" href="https://books2read.com/u/38wW77">Toutes plateformes</a>
+              <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.amazon.fr/ALL-YOU-ACHILLE-Nadyl-Nad%C3%A9-ebook/dp/B0DTFKCM21/ref=tmm_kin_swatch_0">Amazon Kindle</a>
+            </div>
+          </article>
+
+          <article class="book fade-in" role="listitem" style="animation-delay:0.4s">
+            <div class="cover" aria-hidden="true">
+              <span class="tag">À paraître</span>
+            </div>
+            <h3>All of You — Ezra</h3>
+            <p>Une cheffe d'entreprise réunionnaise en Corée du Sud. Un héritier chaebol décidé à la séduire. Tension, humour, clashs culturels.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#contact">Être prévenu·e</a>
+              <a class="btn btn-ghost" href="#extrait">Lire un extrait</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXTRAIT -->
+    <section id="extrait" class="section">
+      <div class="wrap excerpt">
+        <div class="fade-in">
+          <h2>Extrait • Ezra</h2>
+          <p class="muted">Un aperçu (sans spoiler) pour vous mettre dans l'ambiance.</p>
+          <blockquote>
+            Je l'ai vu avant qu'il ne me voie. Grand. Trop net. Trop calme. Et pourtant — il avait cette façon absurde de demander du miel comme on demande une faveur dangereuse.
+          </blockquote>
+          <div class="cta">
+            <a class="btn btn-primary" href="#contact">Être prévenu·e de la sortie</a>
+            <a class="btn btn-ghost" href="#livres">Retour aux livres</a>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2400&auto=format&fit=crop" alt="Cerisiers en fleurs, ambiance douce et rosée"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="a-propos" class="section">
+      <div class="wrap fade-in">
+        <h2>À propos</h2>
+        <p class="muted">Je m'appelle Nadyl Nadé. J'écris des romances qui respirent : des héroïnes noires, rondes, ancrées dans le réel, des héros qui apprennent, et des histoires qui laissent de la place au silence, au respect et au désir.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT / KIT PRESSE -->
+    <section id="contact" class="section">
+      <div class="wrap nl">
+        <div class="fade-in">
+          <h2>Contact</h2>
+          <p class="muted">Demande presse, chronique, ou simple message — je lis tout.</p>
+          <form name="contact" method="post" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="form-row">
+              <input type="text" name="nom" placeholder="Votre nom" aria-label="Nom" required>
+              <input type="email" name="email" placeholder="Votre email" aria-label="Email" required>
+            </div>
+            <textarea name="message" placeholder="Votre message" aria-label="Message" required></textarea>
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+          </form>
+        </div>
+        <div class="card fade-in">
+          <h3 style="margin-top:0;font-family:'Playfair Display',serif">Kit Presse</h3>
+          <ul style="margin:15px 0 0;padding-left:20px;color:var(--sub);line-height:1.8">
+            <li>Bio courte & longue</li>
+            <li>Couvertures HD (Imogene, Achille, Ezra)</li>
+            <li>Extraits & tropes</li>
+            <li>Photos d'autrice</li>
+          </ul>
+          <p style="margin-top:20px"><a class="btn btn-ghost" href="#contact">Demander le kit</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Nadyl Nadé — Tous droits réservés</div>
+      <div class="legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Animation au scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+    
+    // Smooth scroll pour les liens internes
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
